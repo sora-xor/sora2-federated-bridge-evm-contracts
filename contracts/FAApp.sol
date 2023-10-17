@@ -59,7 +59,7 @@ contract FAApp is ERC165, GenericApp, IFAReceiver {
     function lock(address token, bytes32 recipient, uint256 amount) external {
         AssetType asset = tokens[token];
         if (amount == 0) revert InvalidAmount();
-        uint256 transferredAmount;
+        uint256 transferredAmount = 0;
         if (asset == AssetType.Evm) {
             uint256 beforeBalance = IERC20(token).balanceOf(address(this));
             IERC20(token).safeTransferFrom(msg.sender, address(this), amount);
