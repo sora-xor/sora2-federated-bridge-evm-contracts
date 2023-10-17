@@ -5,7 +5,10 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";
 import "./interfaces/IChannelHandler.sol";
-import {InvalidPeersCount, InvalidLength, InvalidNonce, InvalidSignature, InsufficientGas, AlreadyRegistered, Unregistered, InvalidCaller, LastPeer, SignaturesNotEnough, SigParamsLengthMismatch} from "./Error.sol";
+import {
+    InvalidPeersCount, InvalidLength, InvalidNonce, InvalidSignature, InsufficientGas, AlreadyRegistered,
+    Unregistered, InvalidCaller, LastPeer, SignaturesNotEnough, SigParamsLengthMismatch
+} from "./Error.sol";
 
 /**
  * @dev The contract was analyzed using Slither static analysis framework. All recommendations have been taken

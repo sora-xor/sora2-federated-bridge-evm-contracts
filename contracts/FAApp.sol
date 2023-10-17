@@ -7,7 +7,9 @@ import "@openzeppelin/contracts/utils/introspection/ERC165.sol";
 import "./MasterToken.sol";
 import "./interfaces/IFAReceiver.sol";
 import "./GenericApp.sol";
-import {InvalidAmount, Unregistered, AlreadyRegistered, InvalidRecipient, InvalidLength, InvalidContract} from "./Error.sol";
+import {
+    InvalidAmount, Unregistered, AlreadyRegistered, InvalidRecipient, InvalidLength, InvalidContract
+} from "./Error.sol";
 
 contract FAApp is ERC165, GenericApp, IFAReceiver {
     using SafeERC20 for IERC20;
