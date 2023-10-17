@@ -395,7 +395,7 @@ describe("Inbound channel", function () {
     expect(await inboundChannel.isPeer(peers[0].address)).to.be.equal(true);
   });
 
-  it("should_revert_on_submit_signed_random_data(batch gas)", async function () {
+  it("should_revert_on_submit_signed_random_data(batch gas) [ @skip-on-coverage ]", async function () {
     const batch = {
       nonce: 11,
       total_max_gas: 30000000,
