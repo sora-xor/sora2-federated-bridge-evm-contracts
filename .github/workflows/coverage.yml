@@ -1,8 +1,8 @@
-name: Testing
+name: Coverage
 on: [push]
 
 jobs:
-  test:
+  coverage:
     runs-on: ubuntu-latest
 
     strategy:
@@ -21,3 +21,9 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: npm install
       - run: npm run coverage
+
+      - name: Upload Coverage to Codecov
+        if: always()
+        uses: codecov/codecov-action@v3
+        with:
+          files: coverage/coverage-final.json
