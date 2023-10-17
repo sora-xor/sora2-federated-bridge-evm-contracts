@@ -41,7 +41,6 @@ contract ETHApp is GenericApp, IEthTokenReceiver {
     ) external onlyRole(INBOUND_CHANNEL_ROLE) nonReentrant {
         if (recipient == address(0x0)) revert InvalidRecipient();
         if (amount == 0) revert InvalidAmount();
-        // slither-disable-next-line arbitrary-send,low-level-calls
         (bool success, ) = recipient.call{value: amount}("");
         if (!success) revert FailedCall();
         emit Unlocked(sender, recipient, amount);
@@ -51,7 +50,6 @@ contract ETHApp is GenericApp, IEthTokenReceiver {
         address contractAddress
     ) external onlyRole(INBOUND_CHANNEL_ROLE) nonReentrant {
         IEthTokenReceiver receiver = IEthTokenReceiver(contractAddress);
-        // slither-disable-next-line arbitrary-send
         receiver.receivePayment{value: address(this).balance}();
         emit MigratedEth(contractAddress);
     }

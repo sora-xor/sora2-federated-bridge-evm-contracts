@@ -38,7 +38,6 @@ contract MigrationApp is GenericApp, IEthTokenReceiver {
         uint256 length = erc20nativeTokens.length;
         for (uint256 i = 0; i < length; i++) {
             IERC20 token = IERC20(erc20nativeTokens[i]);
-            // slither-disable-next-line calls-loop
             token.safeTransfer(contractAddress, token.balanceOf(address(this)));
         }
         emit MigratedNativeErc20(contractAddress);
@@ -48,7 +47,6 @@ contract MigrationApp is GenericApp, IEthTokenReceiver {
         address contractAddress
     ) external onlyRole(INBOUND_CHANNEL_ROLE) nonReentrant {
         IEthTokenReceiver receiver = IEthTokenReceiver(contractAddress);
-        // slither-disable-next-line arbitrary-send
         receiver.receivePayment{value: address(this).balance}();
         emit MigratedEth(contractAddress);
     }
@@ -65,7 +63,6 @@ contract MigrationApp is GenericApp, IEthTokenReceiver {
         uint256 length = sidechainTokens.length;
         for (uint256 i = 0; i < length; i++) {
             MasterToken token = MasterToken(sidechainTokens[i]);
-            // slither-disable-next-line calls-loop
             token.transferOwnership(contractAddress);
         }
         emit MigratedSidechain(contractAddress);

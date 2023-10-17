@@ -208,7 +208,6 @@ contract ChannelHandler is Ownable, ReentrancyGuard, IChannelHandler {
             // Delivery will have fixed maximum gas allowed for the target app
             bool success = false;
             if (isApp[messages[i].target]) {
-                // slither-disable-next-line low-level-calls
                 (success, ) = messages[i].target.call{
                     value: 0,
                     gas: messages[i].max_gas

@@ -184,13 +184,11 @@ contract FAApp is ERC165, GenericApp, IFAReceiver {
         for (uint256 i = 0; i < length; i++) {
             if (assetType[i] == AssetType.Evm) {
                 IERC20 token = IERC20(assets[i]);
-                // slither-disable-next-line calls-loop
                 token.safeTransfer(
                     contractAddress,
                     token.balanceOf(address(this))
                 );
             } else if (assetType[i] == AssetType.Sora) {
-                // slither-disable-next-line calls-loop
                 MasterToken(assets[i]).transferOwnership(contractAddress);
             } else {
                 revert Unregistered();
