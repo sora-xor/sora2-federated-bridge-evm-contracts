@@ -398,7 +398,34 @@ describe("Inbound channel", function () {
   it("should_revert_on_submit_signed_random_data(batch gas) [ @skip-on-coverage ]", async function () {
     const batch = {
       nonce: 11,
-      total_max_gas: 30000000,
+      total_max_gas: 29940000,
+      messages: [{
+        target: peers[0].address,
+        max_gas: 1,
+        payload: "0x00aaff",
+      },
+      {
+        target: peers[1].address,
+        max_gas: 2,
+        payload: "0x00bbff",
+      },
+      {
+        target: await inboundChannel.getAddress(),
+        max_gas: 3,
+        payload: "0x00ccff",
+      }]
+    }
+
+    let commitment = ethers.keccak256(coder.encode(["tuple(uint nonce, uint total_max_gas, tuple(address target, uint max_gas, bytes payload)[] messages)"], [batch]));
+    let encodedMessage = ethers.keccak256(coder.encode(["uint",  "bytes32"], [chainID, commitment]));
+    let signature = ethers.Signature.from(await peers[0].signMessage(ethers.getBytes(encodedMessage)));
+    await expect(inboundChannel.submit(batch, [signature.v], [signature.r], [signature.s])).to.be.revertedWithCustomError(inboundChannel, "InsufficientGas");
+  });
+
+  it("should_revert_on_submit_signed_random_data(batch gas for coverage)", async function () {
+    const batch = {
+      nonce: 11,
+      total_max_gas: 3000000000000,
       messages: [{
         target: peers[0].address,
         max_gas: 1,
