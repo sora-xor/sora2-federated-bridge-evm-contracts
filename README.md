@@ -7,8 +7,8 @@ This repository contains smart contracts utilized by the Federated Polkadot-Ethe
 Make sure you use a recent node version, e.g. with [nvm](https://github.com/nvm-sh/nvm#installing-and-updating):
 
 ```bash
-nvm install 14.16.1
-nvm use 14.16.1
+nvm install 20.4.5
+nvm use 20.4.5
 ```
 
 Install dependencies with yarn:

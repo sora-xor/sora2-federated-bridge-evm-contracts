@@ -76,7 +76,7 @@ describe("Inbound channel", function () {
 
   it("should_revert_on_invalid_signature_nonce_mismatch", async function () {
     let batch = {
-      nonce: 2,
+      nonce: 1,
       total_max_gas: 6,
       messages: [{
         target: peers[0].address,
