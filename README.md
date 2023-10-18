@@ -1,6 +1,6 @@
 # Ethereum Contracts
 
-This repository contains smart contracts utilized by the Federated Polkadot-Ethereum Bridge.
+This repository contains smart contracts utilized by the Polkadot-Ethereum Bridge.
 
 ## Development
 
