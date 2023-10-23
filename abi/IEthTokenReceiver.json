@@ -1,9 +1,0 @@
-[
-  {
-    "inputs": [],
-    "name": "receivePayment",
-    "outputs": [],
-    "stateMutability": "payable",
-    "type": "function"
-  }
-]

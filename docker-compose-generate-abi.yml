@@ -1,0 +1,11 @@
+version: "2.4"
+
+services:
+  generate-abi:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: generate_abi
+    network_mode: host
+    volumes:
+      - ./abi:/bridge-relayer/abi

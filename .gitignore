@@ -1,4 +1,5 @@
 .env
+abi/
 build/
 node_modules/
 ganache.log
