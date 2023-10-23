@@ -54,3 +54,14 @@ You could also specify a solidity compile version for solidity-docgen.
 ```bash
 npx solidity-docgen --solc-module solc-0.8
 ```
+
+## Generate ABI
+
+ABI for bindings can be generated with docker:
+```bash
+docker compose -f docker-compose-generate-abi.yml up
+```
+or with script, in this case make sure the project has been rebuilt
+```bash
+./scripts/update_abi.sh
+```

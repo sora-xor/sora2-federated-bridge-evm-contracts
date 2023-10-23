@@ -1,6 +1,7 @@
 {
   "license": "Apache-2.0",
   "scripts": {
+    "compile": "npx hardhat compile",
     "test": "npx hardhat test",
     "coverage": "npx hardhat coverage",
     "lint": "npx solhint 'contracts/**/*.sol'"
