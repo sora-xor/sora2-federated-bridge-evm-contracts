@@ -1,6 +1,6 @@
 #!/bin/bash
 
-rm abi/*.json
+rm -f abi/*.json
 mkdir -p abi
 
 for file in $(find artifacts/contracts artifacts/@openzeppelin -name '*.json' | grep -v ".dbg.json$"); do
