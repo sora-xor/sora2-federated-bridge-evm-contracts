@@ -5,14 +5,10 @@ import * as contracts from "./tasks/contracts";
 
 dotenv({ path: resolve(__dirname, ".env") });
 
-import "@nomiclabs/hardhat-truffle5";
-import "@nomiclabs/hardhat-ethers";
-import "@nomiclabs/hardhat-web3";
-import "@nomiclabs/hardhat-etherscan";
-import "@nomiclabs/hardhat-solhint";
 import "hardhat-deploy";
 import "hardhat-deploy-ethers";
-import '@typechain/hardhat';
+import "@nomicfoundation/hardhat-toolbox";
+import "hardhat-gas-reporter";
 import { HardhatUserConfig, task } from "hardhat/config";
 
 const getenv = (name: string) => {
@@ -35,7 +31,7 @@ const config: HardhatUserConfig = {
       mining: {
         auto: true,
         interval: 1000,
-      }
+      },
     },
     docker: {
       url: "http://bridge-geth:8545",
@@ -67,7 +63,13 @@ const config: HardhatUserConfig = {
     },
   },
   solidity: {
-    version: "0.8.15"
+    version: "0.8.15",
+    settings: {
+      optimizer: {
+        enabled: true,
+        runs: 200,
+      },
+    },
   },
   paths: {
     sources: "contracts",
@@ -80,12 +82,16 @@ const config: HardhatUserConfig = {
     timeout: 60000
   },
   etherscan: {
-    apiKey: {"mainnet": etherscanKey},
+    apiKey: { "mainnet": etherscanKey },
   },
   typechain: {
     outDir: './typechain',
-    target: 'ethers-v5',
+    target: 'ethers-v6',
     dontOverrideCompile: false,
+  },
+  gasReporter: {
+    enabled: true,
+    currency: 'USD',
   },
 };
 
