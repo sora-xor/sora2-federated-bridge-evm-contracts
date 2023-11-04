@@ -1,0 +1,72 @@
+[
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "leafNodeHash",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "bytes32[]",
+        "name": "merkleProofItems",
+        "type": "bytes32[]"
+      },
+      {
+        "internalType": "uint64",
+        "name": "merkleProofOrderBitField",
+        "type": "uint64"
+      }
+    ],
+    "name": "calculateMerkleRoot",
+    "outputs": [
+      {
+        "internalType": "bytes32",
+        "name": "currentHash",
+        "type": "bytes32"
+      }
+    ],
+    "stateMutability": "pure",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "root",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "leafNodeHash",
+        "type": "bytes32"
+      },
+      {
+        "components": [
+          {
+            "internalType": "bytes32[]",
+            "name": "merkleProofItems",
+            "type": "bytes32[]"
+          },
+          {
+            "internalType": "uint64",
+            "name": "merkleProofOrderBitField",
+            "type": "uint64"
+          }
+        ],
+        "internalType": "struct ISimplifiedMMRProof.SimplifiedMMRProof",
+        "name": "proof",
+        "type": "tuple"
+      }
+    ],
+    "name": "verifyInclusionProof",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "pure",
+    "type": "function"
+  }
+]
